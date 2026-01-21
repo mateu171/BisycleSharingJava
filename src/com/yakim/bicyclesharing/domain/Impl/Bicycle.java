@@ -1,9 +1,9 @@
 package com.yakim.bicyclesharing.domain.Impl;
 
-import com.yakim.bicyclesharing.domain.BaseEntity;
 import com.yakim.bicyclesharing.domain.enums.StateBicycle;
 import com.yakim.bicyclesharing.domain.enums.TypeBicycle;
 import com.yakim.bicyclesharing.domain.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.domain.util.BaseEntity;
 import java.util.UUID;
 
 public class Bicycle extends BaseEntity {

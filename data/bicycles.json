@@ -1,0 +1,11 @@
+[
+  {
+    "model": "бмік",
+    "typeBicycle": "HIGHWAY",
+    "state": "MAINTENANCE",
+    "pricePerHour": 100.0,
+    "rentalId": "db726e5c-d5e3-4564-9a94-7b920631431f",
+    "id": "1179497e-98a4-4b1d-bb01-15ec3477b454",
+    "errors": {}
+  }
+]

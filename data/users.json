@@ -1,0 +1,18 @@
+[
+  {
+    "login": "Саша",
+    "password": "12345678",
+    "email": "akimsergij@gmail.com",
+    "role": "CLIENT",
+    "id": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
+    "errors": {}
+  },
+  {
+    "login": "Паша",
+    "password": "12345678",
+    "email": "dss@gmail.com",
+    "role": "CLIENT",
+    "id": "af817c3d-c833-4e4d-bad7-5bb9d1c73e19",
+    "errors": {}
+  }
+]

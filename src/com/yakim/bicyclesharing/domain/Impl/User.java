@@ -1,8 +1,8 @@
 package com.yakim.bicyclesharing.domain.Impl;
 
-import com.yakim.bicyclesharing.domain.BaseEntity;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.domain.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.domain.util.BaseEntity;
 
 public class User extends BaseEntity {
 
