@@ -1,11 +1,56 @@
 [
   {
-    "model": "бмік",
+    "model": "Susuki",
     "typeBicycle": "HIGHWAY",
-    "state": "MAINTENANCE",
+    "state": "RENTED",
+    "pricePerHour": 100.0,
+    "rentalId": "5036baf3-b196-40f7-ad21-b09263916c74",
+    "id": "1179497e-98a4-4b1d-bb01-15ec3477b454",
+    "errors": {}
+  },
+  {
+    "model": "Susuki",
+    "typeBicycle": "HIGHWAY",
+    "state": "RENTED",
     "pricePerHour": 100.0,
     "rentalId": "db726e5c-d5e3-4564-9a94-7b920631431f",
-    "id": "1179497e-98a4-4b1d-bb01-15ec3477b454",
+    "id": "1189497e-98a4-4b1d-bb01-15ec3477b454",
+    "errors": {}
+  },
+  {
+    "model": "Giant",
+    "typeBicycle": "MOUNTAIN",
+    "state": "AVAILABLE",
+    "pricePerHour": 80.0,
+    "rentalId": "b2fd747e-9c02-405e-8811-08b6ee506f81",
+    "id": "219a6e4c-1b2d-4c2f-8c21-92fbbf35d1a1",
+    "errors": {}
+  },
+  {
+    "model": "Trek",
+    "typeBicycle": "URBAN",
+    "state": "AVAILABLE",
+    "pricePerHour": 90.0,
+    "rentalId": "f8a8866d-80b5-4b75-94bd-6994d88290a6",
+    "id": "319b7f5d-2c3e-4d3f-9c32-83cdaf45e2b2",
+    "errors": {}
+  },
+  {
+    "model": "Specialized",
+    "typeBicycle": "HIGHWAY",
+    "state": "AVAILABLE",
+    "pricePerHour": 120.0,
+    "rentalId": "8a10d284-ee31-40b0-a656-60043610b630",
+    "id": "419c8e6e-3d4f-4e4a-0d43-74debc56f3c3",
+    "errors": {}
+  },
+  {
+    "model": "Cannondale",
+    "typeBicycle": "MOUNTAIN",
+    "state": "RENTED",
+    "pricePerHour": 110.0,
+    "rentalId": "6d3e1f4a-7c8b-4a9d-91f0-4c2d7e5f6a7b",
+    "id": "519d9f7f-4e5a-5f5b-1e54-65efbc67f4d4",
     "errors": {}
   }
 ]

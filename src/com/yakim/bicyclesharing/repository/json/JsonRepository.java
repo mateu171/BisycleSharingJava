@@ -2,8 +2,9 @@ package com.yakim.bicyclesharing.repository.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.yakim.bicyclesharing.domain.exeption.RepositoryException;
+import com.yakim.bicyclesharing.exeption.RepositoryException;
 import com.yakim.bicyclesharing.repository.Repository;
+import com.yakim.bicyclesharing.util.LocalDateTimeAdapter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +31,11 @@ public abstract class JsonRepository<T, ID> implements Repository<T, ID> {
     this.idExtractor = idExtractor;
     this.filePath = Path.of(filePath);
     this.listType = listType;
-    this.gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+    this.gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+            new LocalDateTimeAdapter())
+        .setPrettyPrinting()
+        .serializeNulls()
+        .create();
     ensureDirectoryExists();
   }
 
@@ -65,6 +71,24 @@ public abstract class JsonRepository<T, ID> implements Repository<T, ID> {
     }
     writeToFile(entities);
     return entity;
+  }
+
+  @Override
+  public T update(T entity) {
+    List<T> entities = findAllInternal();
+    ID id = idExtractor.apply(entity);
+
+    for (int i = 0; i < entities.size(); i++) {
+      if (idExtractor.apply(entities.get(i)).equals(id)) {
+        entities.set(i, entity);
+        writeToFile(entities);
+        return entity;
+      }
+    }
+
+    throw new RepositoryException(
+        "Сутність з id " + id + " не знайдена для оновлення"
+    );
   }
 
   @Override

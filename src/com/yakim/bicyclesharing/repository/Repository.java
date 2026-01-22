@@ -7,6 +7,8 @@ public interface Repository<T, ID> {
 
   T save(T entity);
 
+  T update(T entity);
+
   List<T> findAll();
 
   Optional<T> findById(ID id);

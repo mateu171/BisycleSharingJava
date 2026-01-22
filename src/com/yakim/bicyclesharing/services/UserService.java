@@ -38,4 +38,8 @@ public class UserService {
     return userRepository.delete(user);
   }
 
+  public User updateUser(User updatedUser) {
+    return userRepository.update(updatedUser);
+  }
+
 }

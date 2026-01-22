@@ -2,8 +2,8 @@ package com.yakim.bicyclesharing.domain.Impl;
 
 import com.yakim.bicyclesharing.domain.enums.StateBicycle;
 import com.yakim.bicyclesharing.domain.enums.TypeBicycle;
-import com.yakim.bicyclesharing.domain.exeption.CustomEntityValidationExeption;
-import com.yakim.bicyclesharing.domain.util.BaseEntity;
+import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.util.BaseEntity;
 import java.util.UUID;
 
 public class Bicycle extends BaseEntity {
@@ -23,7 +23,7 @@ public class Bicycle extends BaseEntity {
     this();
     setModel(model);
     setTypeBicycle(typeBicycle);
-    this.state = StateBicycle.MAINTENANCE;
+    this.state = StateBicycle.AVAILABLE;
     setPricePerHour(pricePerHour);
     setRentalId(rentalId);
 
@@ -101,4 +101,16 @@ public class Bicycle extends BaseEntity {
       addError("pricePerHour", "Ціна за годину повинна бути числом!");
     }
   }
+
+  @Override
+  public String toString() {
+    return "Велосипед" +
+        "id = " + getId() +
+        ", модель = '" + model + '\'' +
+        ", тип = " + typeBicycle.getName() +
+        ", стан = " + state.getName() +
+        ", ціна за годину = " + pricePerHour;
+  }
+
+
 }

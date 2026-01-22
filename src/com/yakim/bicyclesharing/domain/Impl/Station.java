@@ -1,7 +1,7 @@
 package com.yakim.bicyclesharing.domain.Impl;
 
-import com.yakim.bicyclesharing.domain.exeption.CustomEntityValidationExeption;
-import com.yakim.bicyclesharing.domain.util.BaseEntity;
+import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.util.BaseEntity;
 import java.util.List;
 import java.util.UUID;
 

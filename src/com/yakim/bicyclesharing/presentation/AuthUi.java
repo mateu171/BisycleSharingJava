@@ -2,7 +2,7 @@ package com.yakim.bicyclesharing.presentation;
 
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
-import com.yakim.bicyclesharing.domain.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
 import com.yakim.bicyclesharing.repository.json.JsonUserRepository;
 import com.yakim.bicyclesharing.services.UserService;
 import java.util.Scanner;
@@ -50,9 +50,9 @@ public class AuthUi {
     if (curretnUser != null && curretnUser.getPassword().equals(password)) {
       System.out.println("Успішна авторизація");
       if (curretnUser.getRole() == Role.CLIENT) {
-        MainUi.UserMenu();
+        MainUserUi.userMenu(curretnUser);
       } else if (curretnUser.getRole() == Role.ADMIN) {
-        MainUi.AdminMenu();
+        MainAdminUi.AdminMenu();
       }
     } else {
       System.out.println("Помилка валідації");

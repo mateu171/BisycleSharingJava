@@ -1,11 +1,11 @@
 package com.yakim.bicyclesharing.domain.enums;
 
-public enum TypeBicycle {
-  MOUNTAIN("гірський"), HIGHWAY("шосейний"), URBAN("міський");
+public enum RentalStatus {
+  ACTIVE("активний"), INACTIVE("неактивний");
 
   private final String name;
 
-  TypeBicycle(String name) {
+  RentalStatus(String name) {
     this.name = name;
   }
 

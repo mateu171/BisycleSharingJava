@@ -1,4 +1,4 @@
-package com.yakim.bicyclesharing.domain.util;
+package com.yakim.bicyclesharing.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;

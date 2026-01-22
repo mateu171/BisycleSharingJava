@@ -1,14 +1,14 @@
 package com.yakim.bicyclesharing.domain.enums;
 
 public enum StateBicycle {
-  MAINTENANCE("вільний"), RENTED("в оренді");
-  private final Object name;
+  AVAILABLE("вільний"), RENTED("в оренді");
+  private final String name;
 
   StateBicycle(String name) {
     this.name = name;
   }
 
-  public Object getName() {
+  public String getName() {
     return name;
   }
 }

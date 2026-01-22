@@ -1,4 +1,4 @@
-package com.yakim.bicyclesharing.domain.exeption;
+package com.yakim.bicyclesharing.exeption;
 
 import java.util.List;
 import java.util.Map;

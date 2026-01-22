@@ -1,4 +1,4 @@
-package com.yakim.bicyclesharing.domain.exeption;
+package com.yakim.bicyclesharing.exeption;
 
 public class RepositoryException extends RuntimeException {
 
