@@ -2,26 +2,27 @@ package com.yakim.bicyclesharing.domain.Impl;
 
 import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
 import com.yakim.bicyclesharing.util.BaseEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class Station extends BaseEntity {
 
+  private final List<UUID> employeesId;
   private String name;
   private String address;
   private int countPlaces;
-  private List<UUID> employeesId;
 
   private Station() {
     super();
+    this.employeesId = new ArrayList<>();
   }
 
-  public Station(String name, String address, String countPlaces, List<UUID> employeesId) {
+  public Station(String name, String address, String countPlaces) {
     this();
     setName(name);
     setAddress(address);
     setCountPlaces(countPlaces);
-    setEmployeesId(employeesId);
 
     if (!isValid()) {
       throw new CustomEntityValidationExeption(getErrors());
@@ -50,8 +51,13 @@ public class Station extends BaseEntity {
     cleanErrors("address");
     if (address == null || address.trim().isEmpty()) {
       addError("address", "Адреса не може бути пустою!");
-    } else if (address.length() < 5 || address.length() > 100) {
-      addError("address", "Адреса повинна бути від 5 до 100 символів!");
+    } else {
+      String pattern = "^вул\\.\\s+[А-Яа-яЇїІіЄєҐґ\\s]+,\\s*\\d+,\\s*[А-Яа-яЇїІіЄєҐґ\\s]+$";
+      if (!address.matches(pattern)) {
+        addError("address", "Адреса повинна бути у форматі: вул. <Назва>, <номер>, <Місто>");
+      } else if (address.length() < 10 || address.length() > 100) {
+        addError("address", "Адреса повинна бути від 10 до 100 символів!");
+      }
     }
     this.address = address;
   }
@@ -69,33 +75,44 @@ public class Station extends BaseEntity {
     }
 
     try {
-      int countPlaces = Integer.parseInt(countPlacesStr.trim());
-      if (countPlaces < 0) {
+      int count = Integer.parseInt(countPlacesStr.trim());
+      if (count < 0) {
         addError("countPlaces", "Кількість місць не може бути від’ємною!");
+      } else if (count > 500) {
+        addError("countPlaces", "Кількість місць не може перевищувати 500!");
       } else {
-        this.countPlaces = countPlaces;
+        this.countPlaces = count;
       }
     } catch (NumberFormatException e) {
       addError("countPlaces", "Кількість місць повинна бути цілим числом!");
     }
   }
 
-
   public List<UUID> getEmployeesId() {
     return employeesId;
   }
 
-  public void setEmployeesId(List<UUID> employeesId) {
+  public void setEmployeeId(UUID employeeId) {
     cleanErrors("employeesId");
-    if (employeesId == null) {
-      addError("employeesId", "Список працівників не може бути null!");
+    if (employeeId == null) {
+      addError("employeesId", "UUID працівника не може бути null!");
+      return;
     }
-    this.employeesId = employeesId;
+    if (employeesId.contains(employeeId)) {
+      addError("employeesId", "Цей працівник вже доданий до станції!");
+      return;
+    }
+    employeesId.add(employeeId);
   }
 
   @Override
   public String toString() {
-    return String.format("Station: %s, Address: %s, Places: %d, Employees: %d",
-        name, address, countPlaces, employeesId == null ? 0 : employeesId.size());
+    return String.format(
+        "Станція: %s | Адреса: %s | Кількість місць: %d | Працівників: %d",
+        name,
+        address,
+        countPlaces,
+        employeesId == null ? 0 : employeesId.size()
+    );
   }
 }

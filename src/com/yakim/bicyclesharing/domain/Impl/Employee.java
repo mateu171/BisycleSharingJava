@@ -68,6 +68,12 @@ public class Employee extends BaseEntity {
 
   @Override
   public String toString() {
-    return String.format("Employee: %s, Phone: %s, Station: %s", name, phoneNumber, stationId);
+    return String.format(
+        "Працівник: %s | Телефон: %s | Станція за яку відповідяє: %s",
+        name,
+        phoneNumber,
+        stationId
+    );
   }
+
 }

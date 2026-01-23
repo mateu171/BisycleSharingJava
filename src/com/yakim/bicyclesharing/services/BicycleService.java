@@ -36,6 +36,10 @@ public class BicycleService {
     return repository.deleteById(id);
   }
 
+  public boolean delete(Bicycle bicycle) {
+    return repository.delete(bicycle);
+  }
+
   public Bicycle updateBicycle(Bicycle updatedBicycle) {
     return repository.update(updatedBicycle);
   }

@@ -3,16 +3,14 @@ package com.yakim.bicyclesharing.presentation;
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
-import com.yakim.bicyclesharing.repository.json.JsonUserRepository;
 import com.yakim.bicyclesharing.services.UserService;
 import java.util.Scanner;
 
 public class AuthUi {
 
-  private static UserService userService;
+  private static final UserService userService = new UserService();
 
   public static void startUp() {
-    userService = new UserService(new JsonUserRepository("data/users.json"));
     System.out.println("Ласкаво просимо до додатку BicycleSharing");
 
     Scanner scanner = new Scanner(System.in);
@@ -52,7 +50,7 @@ public class AuthUi {
       if (curretnUser.getRole() == Role.CLIENT) {
         MainUserUi.userMenu(curretnUser);
       } else if (curretnUser.getRole() == Role.ADMIN) {
-        MainAdminUi.AdminMenu();
+        MainAdminUi.adminMenu();
       }
     } else {
       System.out.println("Помилка валідації");

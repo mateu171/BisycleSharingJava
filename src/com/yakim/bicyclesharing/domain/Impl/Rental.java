@@ -113,7 +113,15 @@ public class Rental extends BaseEntity {
   @Override
   public String toString() {
     return String.format(
-        "Rental: User= %s, Bicycle= %s, Station= %s, Start= %s, End= %s, Total= %.2f, Status= %s",
-        userId, bicycleId, stationId, start, end, totalCost, rentalStatus.getName());
+        "Оренда | Користувач: %s | Велосипед: %s | Станція: %s | Початок: %s | Кінець: %s | Загальна сума: %.2f грн | Статус: %s",
+        userId,
+        bicycleId,
+        stationId,
+        start,
+        end,
+        totalCost,
+        rentalStatus.getName()
+    );
   }
+
 }

@@ -8,11 +8,19 @@
     "errors": {}
   },
   {
-    "login": "Паша",
+    "login": "admin",
+    "password": "adminadmin",
+    "email": "admin@gmail.com",
+    "role": "ADMIN",
+    "id": "10879d59-648f-4c7a-962f-6167b5b3509d",
+    "errors": {}
+  },
+  {
+    "login": "Дора",
     "password": "12345678",
-    "email": "dss@gmail.com",
+    "email": "dora@gmail.com",
     "role": "CLIENT",
-    "id": "af817c3d-c833-4e4d-bad7-5bb9d1c73e19",
+    "id": "5454842b-caa8-4365-b83e-28a68465247b",
     "errors": {}
   }
 ]

@@ -4,15 +4,6 @@
     "typeBicycle": "HIGHWAY",
     "state": "RENTED",
     "pricePerHour": 100.0,
-    "rentalId": "5036baf3-b196-40f7-ad21-b09263916c74",
-    "id": "1179497e-98a4-4b1d-bb01-15ec3477b454",
-    "errors": {}
-  },
-  {
-    "model": "Susuki",
-    "typeBicycle": "HIGHWAY",
-    "state": "RENTED",
-    "pricePerHour": 100.0,
     "rentalId": "db726e5c-d5e3-4564-9a94-7b920631431f",
     "id": "1189497e-98a4-4b1d-bb01-15ec3477b454",
     "errors": {}
@@ -51,6 +42,24 @@
     "pricePerHour": 110.0,
     "rentalId": "6d3e1f4a-7c8b-4a9d-91f0-4c2d7e5f6a7b",
     "id": "519d9f7f-4e5a-5f5b-1e54-65efbc67f4d4",
+    "errors": {}
+  },
+  {
+    "model": "БМХ1",
+    "typeBicycle": "MOUNTAIN",
+    "state": "AVAILABLE",
+    "pricePerHour": 10.0,
+    "rentalId": null,
+    "id": "8c46b2fa-2854-4a19-9b83-d9355658eb30",
+    "errors": {}
+  },
+  {
+    "model": "BMX2",
+    "typeBicycle": "MOUNTAIN",
+    "state": "AVAILABLE",
+    "pricePerHour": 100.0,
+    "rentalId": null,
+    "id": "96e8bd58-de7f-4600-b7cb-3f58b63276e6",
     "errors": {}
   }
 ]

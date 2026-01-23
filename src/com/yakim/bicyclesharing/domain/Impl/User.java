@@ -27,11 +27,6 @@ public class User extends BaseEntity {
     }
   }
 
-  @Override
-  public String toString() {
-    return String.format("%s %s %s", login, email, role);
-  }
-
   public String getLogin() {
     return login;
   }
@@ -88,4 +83,10 @@ public class User extends BaseEntity {
 
     this.role = role;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Логін: %s | Email: %s | Роль: %s", login, email, role);
+  }
+
 }

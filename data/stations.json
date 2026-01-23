@@ -1,0 +1,43 @@
+[
+  {
+    "employeesId": [
+      "1e2d3c4b-5a6f-7e8d-9b0c-1d2e3f4a5b6c",
+      "2f3e4d5c-6b7a-8f9d-0e1c-2f3a4b5c6d7e"
+    ],
+    "name": "Центральна станція",
+    "address": "вул. Хрещатик, 1, Київ",
+    "countPlaces": 10,
+    "id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+    "errors": {}
+  },
+  {
+    "employeesId": [
+      "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d"
+    ],
+    "name": "Південна станція",
+    "address": "вул. Сумська, 25, Харків",
+    "countPlaces": 8,
+    "id": "b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e",
+    "errors": {}
+  },
+  {
+    "employeesId": [
+      "1e2d3c4b-5a6f-7e8d-9b0c-1d2e3f4a5b6c"
+    ],
+    "name": "Західна станція",
+    "address": "вул. Лесі Українки, 10, Львів",
+    "countPlaces": 12,
+    "id": "c1d2e3f4-a5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "errors": {}
+  },
+  {
+    "employeesId": [
+      "2f3e4d5c-6b7a-8f9d-0e1c-2f3a4b5c6d7e"
+    ],
+    "name": "Неаполіно",
+    "address": "вул. ужгородська, 10, Ужгород",
+    "countPlaces": 1,
+    "id": "6a61073f-ad42-4bf6-971d-df93f0351b91",
+    "errors": {}
+  }
+]

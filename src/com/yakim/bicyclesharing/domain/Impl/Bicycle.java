@@ -18,14 +18,12 @@ public class Bicycle extends BaseEntity {
     super();
   }
 
-  public Bicycle(String model, TypeBicycle typeBicycle, String pricePerHour,
-      UUID rentalId) {
+  public Bicycle(String model, TypeBicycle typeBicycle, String pricePerHour) {
     this();
     setModel(model);
     setTypeBicycle(typeBicycle);
     this.state = StateBicycle.AVAILABLE;
     setPricePerHour(pricePerHour);
-    setRentalId(rentalId);
 
     if (!isValid()) {
       throw new CustomEntityValidationExeption(getErrors());
@@ -104,12 +102,14 @@ public class Bicycle extends BaseEntity {
 
   @Override
   public String toString() {
-    return "Велосипед" +
-        "id = " + getId() +
-        ", модель = '" + model + '\'' +
-        ", тип = " + typeBicycle.getName() +
-        ", стан = " + state.getName() +
-        ", ціна за годину = " + pricePerHour;
+    return String.format(
+        "Велосипед | ID: %s | Модель: %s | Тип: %s | Стан: %s | Ціна/год: %.2f",
+        getId(),
+        model,
+        typeBicycle.getName(),
+        state.getName(),
+        pricePerHour
+    );
   }
 
 

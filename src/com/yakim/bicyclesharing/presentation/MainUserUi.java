@@ -17,7 +17,7 @@ public class MainUserUi {
 
   private static final BicycleService bicycleService = new BicycleService();
   private static final RentalService rentalService = new RentalService();
-  private static final Scanner scaner = new Scanner(System.in);
+  private static final Scanner scarnner = new Scanner(System.in);
 
   private static List<Bicycle> bicycles;
   private static List<Bicycle> bicyclesAvailable;
@@ -41,7 +41,7 @@ public class MainUserUi {
       System.out.println("5 - Подивитися всі мої оренди");
       System.out.println("0 - Вихід");
 
-      String choice = scaner.nextLine();
+      String choice = scarnner.nextLine();
 
       if (choice.equals("1")) {
         showAllBicycles();
@@ -154,7 +154,7 @@ public class MainUserUi {
 
   private static int choiseUser() {
     while (true) {
-      String input = scaner.nextLine();
+      String input = scarnner.nextLine();
       try {
         return Integer.parseInt(input);
       } catch (NumberFormatException e) {

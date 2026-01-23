@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Іван Петренко",
+    "phoneNumber": "+380671234567",
+    "stationId": "c1d2e3f4-a5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "id": "1e2d3c4b-5a6f-7e8d-9b0c-1d2e3f4a5b6c",
+    "errors": {}
+  },
+  {
+    "name": "Олена Коваль",
+    "phoneNumber": "+380501112233",
+    "stationId": "6a61073f-ad42-4bf6-971d-df93f0351b91",
+    "id": "2f3e4d5c-6b7a-8f9d-0e1c-2f3a4b5c6d7e",
+    "errors": {}
+  },
+  {
+    "name": "Петро Іваненко",
+    "phoneNumber": "+380931234567",
+    "stationId": "c1d2e3f4-a5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "id": "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d",
+    "errors": {}
+  }
+]

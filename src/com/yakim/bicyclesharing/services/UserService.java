@@ -3,17 +3,14 @@ package com.yakim.bicyclesharing.services;
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.repository.UserRepository;
+import com.yakim.bicyclesharing.repository.json.JsonUserRepository;
 import java.util.List;
 import java.util.UUID;
 
 public class UserService {
 
-  private final UserRepository userRepository;
-
-  public UserService(UserRepository userRepository) {
-    this.userRepository = userRepository;
-  }
-
+  private final UserRepository userRepository = new JsonUserRepository("data/users.json");
+  
   public User addNewUser(User newUser) {
     return userRepository.save(newUser);
   }
