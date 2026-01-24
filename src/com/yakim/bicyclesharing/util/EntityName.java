@@ -1,7 +1,8 @@
 package com.yakim.bicyclesharing.util;
 
 public enum EntityName {
-  USERS("користучів"), BICYCLES("велосипедів"), STATIONS("станції"), EMPLOYEES("робітників");
+  USERS("користучів"), BICYCLES("велосипедів"), STATIONS("станції"), EMPLOYEES(
+      "робітників"), RENTALS("оренд");
 
   private final String name;
 

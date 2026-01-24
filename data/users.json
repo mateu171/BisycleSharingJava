@@ -1,13 +1,5 @@
 [
   {
-    "login": "Саша",
-    "password": "12345678",
-    "email": "akimsergij@gmail.com",
-    "role": "CLIENT",
-    "id": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
-    "errors": {}
-  },
-  {
     "login": "admin",
     "password": "adminadmin",
     "email": "admin@gmail.com",

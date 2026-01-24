@@ -1,4 +1,4 @@
-package com.yakim.bicyclesharing.presentation;
+package com.yakim.bicyclesharing.presentation.main;
 
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
@@ -48,7 +48,7 @@ public class AuthUi {
     if (curretnUser != null && curretnUser.getPassword().equals(password)) {
       System.out.println("Успішна авторизація");
       if (curretnUser.getRole() == Role.CLIENT) {
-        MainUserUi.userMenu(curretnUser);
+        MainUserUi.mainUserMenu(curretnUser);
       } else if (curretnUser.getRole() == Role.ADMIN) {
         MainAdminUi.adminMenu();
       }
@@ -72,11 +72,11 @@ public class AuthUi {
       try {
         User user = new User(login, password, email, Role.CLIENT);
 
-        if (userService.getByLogin(user.getLogin()) != null) {
+        if (userService.existsByLogin(user.getLogin())) {
           System.out.println("Упс! Схоже що даний логін занятий\nСпробуйте ще раз\n");
         } else {
           System.out.println("Успішна реєстрація");
-          userService.addNewUser(user);
+          userService.add(user);
           return;
         }
       } catch (CustomEntityValidationExeption exeption) {

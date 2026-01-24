@@ -3,28 +3,18 @@ package com.yakim.bicyclesharing.services;
 import com.yakim.bicyclesharing.domain.Impl.Rental;
 import com.yakim.bicyclesharing.domain.enums.RentalStatus;
 import com.yakim.bicyclesharing.repository.RentalRepository;
+import com.yakim.bicyclesharing.repository.Repository;
 import com.yakim.bicyclesharing.repository.json.JsonRentalRepository;
 import java.util.List;
 import java.util.UUID;
 
-public class RentalService {
+public class RentalService extends BaseService<Rental, UUID> {
 
   private final RentalRepository repository = new JsonRentalRepository("data/rentals.json");
 
-  public List<Rental> getAll() {
-    return repository.findAll();
-  }
-
-  public Rental addNewRental(Rental newRental) {
-    return repository.save(newRental);
-  }
-
-  public boolean delete(UUID id) {
-    return repository.deleteById(id);
-  }
-
-  public Rental updateRental(Rental updatedRental) {
-    return repository.update(updatedRental);
+  @Override
+  protected Repository<Rental, UUID> getRepository() {
+    return repository;
   }
 
   public List<Rental> getByUserId(UUID id) {

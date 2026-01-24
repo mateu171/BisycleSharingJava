@@ -4,24 +4,22 @@ import com.yakim.bicyclesharing.domain.Impl.Bicycle;
 import com.yakim.bicyclesharing.domain.enums.StateBicycle;
 import com.yakim.bicyclesharing.domain.enums.TypeBicycle;
 import com.yakim.bicyclesharing.repository.BicycleRepository;
+import com.yakim.bicyclesharing.repository.Repository;
 import com.yakim.bicyclesharing.repository.json.JsonBicycleRepository;
 import java.util.List;
 import java.util.UUID;
 
-public class BicycleService {
+public class BicycleService extends BaseService<Bicycle, UUID> {
 
   private final BicycleRepository repository = new JsonBicycleRepository("data/bicycles.json");
 
-  public Bicycle addNewBicycle(Bicycle bicycle) {
-    return repository.save(bicycle);
-  }
-
-  public List<Bicycle> getAll() {
-    return repository.findAll();
+  @Override
+  protected Repository<Bicycle, UUID> getRepository() {
+    return repository;
   }
 
   public Bicycle getById(UUID id) {
-    return repository.findById(id).get();
+    return repository.findById(id).orElse(null);
   }
 
   public List<Bicycle> getByState(StateBicycle stateBicycle) {
@@ -30,18 +28,6 @@ public class BicycleService {
 
   public List<Bicycle> getByType(TypeBicycle typeBicycle) {
     return repository.findByType(typeBicycle);
-  }
-
-  public boolean delete(UUID id) {
-    return repository.deleteById(id);
-  }
-
-  public boolean delete(Bicycle bicycle) {
-    return repository.delete(bicycle);
-  }
-
-  public Bicycle updateBicycle(Bicycle updatedBicycle) {
-    return repository.update(updatedBicycle);
   }
 }
 

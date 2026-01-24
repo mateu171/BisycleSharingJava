@@ -1,4 +1,4 @@
-package com.yakim.bicyclesharing.presentation;
+package com.yakim.bicyclesharing.presentation.main;
 
 import com.yakim.bicyclesharing.domain.Impl.Bicycle;
 import com.yakim.bicyclesharing.domain.Impl.Rental;
@@ -7,6 +7,8 @@ import com.yakim.bicyclesharing.domain.enums.RentalStatus;
 import com.yakim.bicyclesharing.domain.enums.StateBicycle;
 import com.yakim.bicyclesharing.services.BicycleService;
 import com.yakim.bicyclesharing.services.RentalService;
+import com.yakim.bicyclesharing.util.ConsoleHelper;
+import com.yakim.bicyclesharing.util.EntityName;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,7 +27,7 @@ public class MainUserUi {
   private static List<Rental> activeRentals;
   private static User currentUser;
 
-  public static void userMenu(User user) {
+  public static void mainUserMenu(User user) {
     currentUser = user;
     System.out.println("Меню корисутвача\n");
     while (true) {
@@ -44,7 +46,7 @@ public class MainUserUi {
       String choice = scarnner.nextLine();
 
       if (choice.equals("1")) {
-        showAllBicycles();
+        ConsoleHelper.showAll(bicycles, EntityName.BICYCLES);
       } else if (choice.equals("2")) {
         showAllAvailableBicycles();
       } else if (choice.equals("3")) {
@@ -52,18 +54,10 @@ public class MainUserUi {
       } else if (choice.equals("4")) {
         giveBackBicycle();
       } else if (choice.equals("5")) {
-        showAllRentals();
+        ConsoleHelper.showAll(userRentals, EntityName.RENTALS);
       } else if (choice.equals("0")) {
         return;
       }
-    }
-  }
-
-  private static void showAllBicycles() {
-    int count = 1;
-    for (var bicycle : bicycles) {
-      System.out.println(count + ". " + bicycle);
-      count++;
     }
   }
 
@@ -88,24 +82,24 @@ public class MainUserUi {
     showAllAvailableBicycles();
     System.out.println();
     System.out.println("Виберіть велосипед для оренди");
-    int choice = choiseUser() - 1;
+    int choice = ConsoleHelper.chooseUser() - 1;
     if (choice < 0 || choice >= bicyclesAvailable.size()) {
       System.out.println("В списку за даним номером нема такого велосипеда");
     } else {
       Bicycle rented = bicyclesAvailable.get(choice);
       System.out.println("Успішна оренда!");
-      Rental currentRental = rentalService.addNewRental(
+      Rental currentRental = rentalService.add(
           new Rental(currentUser.getId(), rented.getId(), UUID.randomUUID()));
       rented.setState(StateBicycle.RENTED);
       rented.setRentalId(currentRental.getId());
-      bicycleService.updateBicycle(rented);
+      bicycleService.update(rented);
     }
   }
 
   private static void giveBackBicycle() {
     showActiveRentals();
     System.out.println("Виберіть одну з оренд, яку хочете скасувати");
-    int choice = choiseUser() - 1;
+    int choice = ConsoleHelper.chooseUser() - 1;
     if (choice < 0 || choice >= activeRentals.size()) {
       System.out.println("В списку за даним номером нема такої оренди");
     } else {
@@ -121,22 +115,10 @@ public class MainUserUi {
       double totalCost = Math.round(hours * rented.getPricePerHour() * 100.0) / 100.0;
 
       currentRental.setTotalCost(totalCost);
-      bicycleService.updateBicycle(rented);
-      rentalService.updateRental(currentRental);
+      bicycleService.update(rented);
+      rentalService.update(currentRental);
 
       System.out.println("Ви повернули велосипед. Загальна вартість: " + totalCost + " грн");
-    }
-  }
-
-  private static void showAllRentals() {
-    if (userRentals == null || userRentals.isEmpty()) {
-      System.out.println("У вас нема жодних оренд");
-      return;
-    }
-    int count = 1;
-    for (var rental : userRentals) {
-      System.out.println(count + ". " + rental);
-      count++;
     }
   }
 
@@ -149,17 +131,6 @@ public class MainUserUi {
     for (var rental : activeRentals) {
       System.out.println(count + ". " + rental);
       count++;
-    }
-  }
-
-  private static int choiseUser() {
-    while (true) {
-      String input = scarnner.nextLine();
-      try {
-        return Integer.parseInt(input);
-      } catch (NumberFormatException e) {
-        System.out.println("Упс, ви ввели не число! Спробуйте ще раз:");
-      }
     }
   }
 }
