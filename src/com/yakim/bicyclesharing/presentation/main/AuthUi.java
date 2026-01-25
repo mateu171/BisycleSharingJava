@@ -3,17 +3,21 @@ package com.yakim.bicyclesharing.presentation.main;
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.services.EmailService;
 import com.yakim.bicyclesharing.services.UserService;
+import com.yakim.bicyclesharing.services.VerificationService;
 import java.util.Scanner;
 
 public class AuthUi {
 
   private static final UserService userService = new UserService();
+  private static final VerificationService verifi = new VerificationService(
+      new EmailService("morgus288@gmail.com", "zbnb qxcn qpmm deks"));
+  private static final Scanner scanner = new Scanner(System.in);
 
   public static void startUp() {
     System.out.println("Ласкаво просимо до додатку BicycleSharing");
 
-    Scanner scanner = new Scanner(System.in);
     while (true) {
       System.out.println();
       System.out.println("Виберіть одну з доступних дій");
@@ -35,7 +39,6 @@ public class AuthUi {
 
 
   private static void login() {
-    Scanner scanner = new Scanner(System.in);
     System.out.println("Авторизація\n");
 
     System.out.println("Введіть свій логін");
@@ -43,13 +46,13 @@ public class AuthUi {
     System.out.println("Введіть свій пароль");
     String password = scanner.nextLine();
 
-    User curretnUser = userService.getByLogin(login);
+    User currentUser = userService.getByLogin(login);
 
-    if (curretnUser != null && curretnUser.getPassword().equals(password)) {
+    if (currentUser != null && currentUser.getPassword().equals(password)) {
       System.out.println("Успішна авторизація");
-      if (curretnUser.getRole() == Role.CLIENT) {
-        MainUserUi.mainUserMenu(curretnUser);
-      } else if (curretnUser.getRole() == Role.ADMIN) {
+      if (currentUser.getRole() == Role.CLIENT) {
+        MainUserUi.mainUserMenu(currentUser);
+      } else if (currentUser.getRole() == Role.ADMIN) {
         MainAdminUi.adminMenu();
       }
     } else {
@@ -58,7 +61,6 @@ public class AuthUi {
   }
 
   private static void register() {
-    Scanner scanner = new Scanner(System.in);
     System.out.println("Реєстрація\n");
 
     while (true) {
@@ -75,12 +77,26 @@ public class AuthUi {
         if (userService.existsByLogin(user.getLogin())) {
           System.out.println("Упс! Схоже що даний логін занятий\nСпробуйте ще раз\n");
         } else {
+//          try {
+          int code = verifi.sendVerificationCode(email);
+          System.out.println("Введіть код, який прийшов на email:");
+          String userCode = scanner.nextLine();
+
+          if (!Integer.toString(code).equals(userCode)) {
+            System.out.println("Неправильний код, реєстрація скасована");
+            return;
+          }
+
           System.out.println("Успішна реєстрація");
           userService.add(user);
           return;
+//          } catch (EmailExeption e) {
+//            System.out.println(e.getMessage());
+//            System.out.println("Спробуйте знову\n");
+//          }
         }
-      } catch (CustomEntityValidationExeption exeption) {
-        System.out.println(exeption.getMessage());
+      } catch (CustomEntityValidationExeption exception) {
+        System.out.println(exception.getMessage());
       }
     }
 

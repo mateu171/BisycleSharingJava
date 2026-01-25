@@ -10,7 +10,8 @@ import java.util.UUID;
 
 public class UserService extends BaseService<User, UUID> {
 
-  private final UserRepository userRepository = new JsonUserRepository("data/users.json");
+  private static final String USERS_FILE = "data/users.json";
+  private final UserRepository userRepository = new JsonUserRepository(USERS_FILE);
 
   public boolean existsByLogin(String login) {
     return userRepository.findByLogin(login) != null;
