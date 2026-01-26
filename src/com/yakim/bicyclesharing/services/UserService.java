@@ -4,14 +4,16 @@ import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.repository.Repository;
 import com.yakim.bicyclesharing.repository.UserRepository;
-import com.yakim.bicyclesharing.repository.json.JsonUserRepository;
 import java.util.List;
 import java.util.UUID;
 
 public class UserService extends BaseService<User, UUID> {
 
-  private static final String USERS_FILE = "data/users.json";
-  private final UserRepository userRepository = new JsonUserRepository(USERS_FILE);
+  private final UserRepository userRepository;
+
+  public UserService(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
   public boolean existsByLogin(String login) {
     return userRepository.findByLogin(login) != null;

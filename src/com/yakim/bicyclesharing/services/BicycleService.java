@@ -5,13 +5,16 @@ import com.yakim.bicyclesharing.domain.enums.StateBicycle;
 import com.yakim.bicyclesharing.domain.enums.TypeBicycle;
 import com.yakim.bicyclesharing.repository.BicycleRepository;
 import com.yakim.bicyclesharing.repository.Repository;
-import com.yakim.bicyclesharing.repository.json.JsonBicycleRepository;
 import java.util.List;
 import java.util.UUID;
 
 public class BicycleService extends BaseService<Bicycle, UUID> {
 
-  private final BicycleRepository repository = new JsonBicycleRepository("data/bicycles.json");
+  private final BicycleRepository repository;
+
+  public BicycleService(BicycleRepository repository) {
+    this.repository = repository;
+  }
 
   @Override
   protected Repository<Bicycle, UUID> getRepository() {

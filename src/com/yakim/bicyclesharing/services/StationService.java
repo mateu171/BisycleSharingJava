@@ -3,13 +3,15 @@ package com.yakim.bicyclesharing.services;
 import com.yakim.bicyclesharing.domain.Impl.Station;
 import com.yakim.bicyclesharing.repository.Repository;
 import com.yakim.bicyclesharing.repository.StationRepository;
-import com.yakim.bicyclesharing.repository.json.JsonStationRepository;
 import java.util.UUID;
 
 public class StationService extends BaseService<Station, UUID> {
 
-  private final StationRepository stationRepository =
-      new JsonStationRepository("data/stations.json");
+  private final StationRepository stationRepository;
+
+  public StationService(StationRepository stationRepository) {
+    this.stationRepository = stationRepository;
+  }
 
   @Override
   protected Repository<Station, UUID> getRepository() {

@@ -1,68 +1,24 @@
 [
   {
-    "userId": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
+    "userId": "ecf2dd02-9efa-4c20-a33e-e58d900d847e",
     "bicycleId": "219a6e4c-1b2d-4c2f-8c21-92fbbf35d1a1",
-    "stationId": "81619d0f-83a0-4c6b-a60a-eebc27c06f8b",
+    "stationId": "bf240d9a-7804-4243-895d-2364786dae62",
     "rentalStatus": "INACTIVE",
-    "start": "2026-01-22T17:33:14.7440211",
-    "end": "2026-01-22T18:01:13.183483",
-    "totalCost": 36.0,
-    "id": "8a3b0e78-8320-45fa-bf5e-ac67937f7dc2",
+    "start": "2026-01-26T15:54:04.8908285",
+    "end": "2026-01-26T15:54:13.4142994",
+    "totalCost": 0.0,
+    "id": "ca8a3f0d-08be-4718-b438-42f9c448ff03",
     "errors": {}
   },
   {
-    "userId": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
-    "bicycleId": "319b7f5d-2c3e-4d3f-9c32-83cdaf45e2b2",
-    "stationId": "bc87c216-49d2-4392-b8de-dc34a34772f6",
+    "userId": "ecf2dd02-9efa-4c20-a33e-e58d900d847e",
+    "bicycleId": "96e8bd58-de7f-4600-b7cb-3f58b63276e6",
+    "stationId": "d288ffdc-3be6-4a78-b561-86f564ea8fa0",
     "rentalStatus": "INACTIVE",
-    "start": "2026-01-22T17:33:22.1065481",
-    "end": "2026-01-22T18:02:06.9159845",
-    "totalCost": 42.0,
-    "id": "f8a8866d-80b5-4b75-94bd-6994d88290a6",
-    "errors": {}
-  },
-  {
-    "userId": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
-    "bicycleId": "419c8e6e-3d4f-4e4a-0d43-74debc56f3c3",
-    "stationId": "5d82f1ae-a7d1-4159-b43b-9a5fd0e75664",
-    "rentalStatus": "INACTIVE",
-    "start": "2026-01-22T17:39:50.8050675",
-    "end": "2026-01-22T17:44:09.7455059",
-    "totalCost": 8.0,
-    "id": "2b27175e-97ea-48c0-9f77-c7148db80fa8",
-    "errors": {}
-  },
-  {
-    "userId": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
-    "bicycleId": "219a6e4c-1b2d-4c2f-8c21-92fbbf35d1a1",
-    "stationId": "e151be0a-0f51-46fe-9b88-82fbeacab557",
-    "rentalStatus": "INACTIVE",
-    "start": "2026-01-22T17:42:35.3832157",
-    "end": "2026-01-22T18:02:25.2281655",
-    "totalCost": 25.33,
-    "id": "17412c30-70a5-48c6-9166-98aa48deee52",
-    "errors": {}
-  },
-  {
-    "userId": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
-    "bicycleId": "219a6e4c-1b2d-4c2f-8c21-92fbbf35d1a1",
-    "stationId": "6ea231f3-c97a-4be2-9b90-126ffc199bc2",
-    "rentalStatus": "INACTIVE",
-    "start": "2026-01-22T17:53:26.0031193",
-    "end": "2026-01-22T18:03:38.4622193",
-    "totalCost": 13.33,
-    "id": "b2fd747e-9c02-405e-8811-08b6ee506f81",
-    "errors": {}
-  },
-  {
-    "userId": "39a2ed48-84ed-4643-9599-ed9d4ff69b91",
-    "bicycleId": "419c8e6e-3d4f-4e4a-0d43-74debc56f3c3",
-    "stationId": "5fc3100d-0021-4fbb-aa8d-3f55f3097e3c",
-    "rentalStatus": "INACTIVE",
-    "start": "2026-01-22T18:00:39.524765",
-    "end": "2026-01-22T18:03:31.3558999",
-    "totalCost": 4.0,
-    "id": "8a10d284-ee31-40b0-a656-60043610b630",
+    "start": "2026-01-26T16:00:47.5560999",
+    "end": "2026-01-26T16:01:03.0871947",
+    "totalCost": 0.0,
+    "id": "b42490ca-738d-4c98-abe4-f7a6fb24e95d",
     "errors": {}
   }
 ]

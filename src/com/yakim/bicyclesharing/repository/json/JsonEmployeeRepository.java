@@ -6,6 +6,7 @@ import com.yakim.bicyclesharing.domain.Impl.Employee;
 import com.yakim.bicyclesharing.repository.EmployeeRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class JsonEmployeeRepository extends JsonRepository<Employee, UUID> implements
@@ -23,11 +24,11 @@ public class JsonEmployeeRepository extends JsonRepository<Employee, UUID> imple
 
   @Override
   public List<Employee> findByStationId(UUID id) {
-    return findBy(i -> i.getId() == id);
+    return findBy(e -> id.equals(e.getStationId()));
   }
 
   @Override
   public List<Employee> findByName(String name) {
-    return findBy(n -> n.equals(name));
+    return findBy(e -> Objects.equals(e.getName(), name));
   }
 }

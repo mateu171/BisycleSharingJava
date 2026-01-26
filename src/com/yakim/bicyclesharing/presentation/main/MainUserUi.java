@@ -3,27 +3,24 @@ package com.yakim.bicyclesharing.presentation.main;
 import com.yakim.bicyclesharing.domain.Impl.Bicycle;
 import com.yakim.bicyclesharing.domain.Impl.Rental;
 import com.yakim.bicyclesharing.domain.Impl.User;
-import com.yakim.bicyclesharing.domain.enums.RentalStatus;
 import com.yakim.bicyclesharing.domain.enums.StateBicycle;
 import com.yakim.bicyclesharing.services.BicycleService;
 import com.yakim.bicyclesharing.services.RentalService;
+import com.yakim.bicyclesharing.util.AppConfig;
 import com.yakim.bicyclesharing.util.ConsoleHelper;
 import com.yakim.bicyclesharing.util.EntityName;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
 public class MainUserUi {
 
-  private static final BicycleService bicycleService = new BicycleService();
-  private static final RentalService rentalService = new RentalService();
-  private static final Scanner scarnner = new Scanner(System.in);
+  private static final BicycleService bicycleService = AppConfig.bicycleService();
+  private static final RentalService rentalService = AppConfig.rentalService();
+  private static final Scanner scanner = new Scanner(System.in);
 
   private static List<Bicycle> bicycles;
   private static List<Bicycle> bicyclesAvailable;
-  private static List<Rental> userRentals;
   private static List<Rental> activeRentals;
   private static User currentUser;
 
@@ -33,7 +30,6 @@ public class MainUserUi {
     while (true) {
       bicycles = bicycleService.getAll();
       bicyclesAvailable = bicycleService.getByState(StateBicycle.AVAILABLE);
-      userRentals = rentalService.getByUserId(currentUser.getId());
       activeRentals = rentalService.getByActiveAndUserId(currentUser.getId());
 
       System.out.println("1 - Подивитися всі велосипеди");
@@ -43,7 +39,7 @@ public class MainUserUi {
       System.out.println("5 - Подивитися всі мої оренди");
       System.out.println("0 - Вихід");
 
-      String choice = scarnner.nextLine();
+      String choice = scanner.nextLine();
 
       if (choice.equals("1")) {
         ConsoleHelper.showAll(bicycles, EntityName.BICYCLES);
@@ -54,7 +50,7 @@ public class MainUserUi {
       } else if (choice.equals("4")) {
         giveBackBicycle();
       } else if (choice.equals("5")) {
-        ConsoleHelper.showAll(userRentals, EntityName.RENTALS);
+        showActiveRentals();
       } else if (choice.equals("0")) {
         return;
       }
@@ -63,10 +59,6 @@ public class MainUserUi {
 
   private static void showAllAvailableBicycles() {
     int count = 1;
-    if (bicyclesAvailable == null || bicyclesAvailable.isEmpty()) {
-      System.out.println("Упс! Нема жодних доступних велосипедів");
-      return;
-    }
     System.out.println("Список всіх доступних велосипедів для оренди");
     for (var bicycle : bicyclesAvailable) {
       System.out.println(count + ". " + bicycle);
@@ -97,6 +89,10 @@ public class MainUserUi {
   }
 
   private static void giveBackBicycle() {
+    if (activeRentals.isEmpty()) {
+      System.out.println("У вас нема активних оренд");
+      return;
+    }
     showActiveRentals();
     System.out.println("Виберіть одну з оренд, яку хочете скасувати");
     int choice = ConsoleHelper.chooseUser() - 1;
@@ -104,29 +100,15 @@ public class MainUserUi {
       System.out.println("В списку за даним номером нема такої оренди");
     } else {
       Rental currentRental = activeRentals.get(choice);
-      Bicycle rented = bicycleService.getById(currentRental.getBicycleId());
 
-      currentRental.setRentalStatus(RentalStatus.INACTIVE);
-      currentRental.setEnd(LocalDateTime.now());
-      rented.setState(StateBicycle.AVAILABLE);
+      currentRental = rentalService.finishRental(currentRental);
 
-      Duration duration = Duration.between(currentRental.getStart(), currentRental.getEnd());
-      double hours = duration.toMinutes() / 60.0;
-      double totalCost = Math.round(hours * rented.getPricePerHour() * 100.0) / 100.0;
-
-      currentRental.setTotalCost(totalCost);
-      bicycleService.update(rented);
-      rentalService.update(currentRental);
-
-      System.out.println("Ви повернули велосипед. Загальна вартість: " + totalCost + " грн");
+      System.out.println(
+          "Ви повернули велосипед. Загальна вартість: " + currentRental.getTotalCost() + " грн");
     }
   }
 
   private static void showActiveRentals() {
-    if (activeRentals == null || activeRentals.isEmpty()) {
-      System.out.println("У вас нема активних оренд");
-      return;
-    }
     int count = 1;
     for (var rental : activeRentals) {
       System.out.println(count + ". " + rental);

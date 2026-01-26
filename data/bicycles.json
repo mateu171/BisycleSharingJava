@@ -13,7 +13,7 @@
     "typeBicycle": "MOUNTAIN",
     "state": "AVAILABLE",
     "pricePerHour": 80.0,
-    "rentalId": "b2fd747e-9c02-405e-8811-08b6ee506f81",
+    "rentalId": "ca8a3f0d-08be-4718-b438-42f9c448ff03",
     "id": "219a6e4c-1b2d-4c2f-8c21-92fbbf35d1a1",
     "errors": {}
   },
@@ -58,7 +58,7 @@
     "typeBicycle": "MOUNTAIN",
     "state": "AVAILABLE",
     "pricePerHour": 100.0,
-    "rentalId": null,
+    "rentalId": "b42490ca-738d-4c98-abe4-f7a6fb24e95d",
     "id": "96e8bd58-de7f-4600-b7cb-3f58b63276e6",
     "errors": {}
   }

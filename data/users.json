@@ -14,5 +14,13 @@
     "role": "CLIENT",
     "id": "5454842b-caa8-4365-b83e-28a68465247b",
     "errors": {}
+  },
+  {
+    "login": "Моргус",
+    "password": "12345678",
+    "email": "akimsergij702@gmail.com",
+    "role": "CLIENT",
+    "id": "ecf2dd02-9efa-4c20-a33e-e58d900d847e",
+    "errors": {}
   }
 ]

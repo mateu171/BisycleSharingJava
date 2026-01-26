@@ -2,15 +2,19 @@ package com.yakim.bicyclesharing.presentation.main;
 
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
+import com.yakim.bicyclesharing.exeption.AuthException;
 import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.services.AuthService;
 import com.yakim.bicyclesharing.services.EmailService;
 import com.yakim.bicyclesharing.services.UserService;
 import com.yakim.bicyclesharing.services.VerificationService;
+import com.yakim.bicyclesharing.util.AppConfig;
 import java.util.Scanner;
 
 public class AuthUi {
 
-  private static final UserService userService = new UserService();
+  private static final UserService userService = AppConfig.userService();
+  private static final AuthService authService = AppConfig.authService();
   private static final VerificationService verifi = new VerificationService(
       new EmailService("morgus288@gmail.com", "zbnb qxcn qpmm deks"));
   private static final Scanner scanner = new Scanner(System.in);
@@ -46,17 +50,15 @@ public class AuthUi {
     System.out.println("Введіть свій пароль");
     String password = scanner.nextLine();
 
-    User currentUser = userService.getByLogin(login);
-
-    if (currentUser != null && currentUser.getPassword().equals(password)) {
-      System.out.println("Успішна авторизація");
+    try {
+      User currentUser = authService.authenticate(login, password);
       if (currentUser.getRole() == Role.CLIENT) {
         MainUserUi.mainUserMenu(currentUser);
       } else if (currentUser.getRole() == Role.ADMIN) {
         MainAdminUi.adminMenu();
       }
-    } else {
-      System.out.println("Помилка валідації");
+    } catch (AuthException exception) {
+      System.out.println(exception.getMessage());
     }
   }
 

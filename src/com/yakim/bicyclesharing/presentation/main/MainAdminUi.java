@@ -7,16 +7,17 @@ import com.yakim.bicyclesharing.services.BicycleService;
 import com.yakim.bicyclesharing.services.EmployeeService;
 import com.yakim.bicyclesharing.services.StationService;
 import com.yakim.bicyclesharing.services.UserService;
+import com.yakim.bicyclesharing.util.AppConfig;
 import java.util.Scanner;
 
 public class MainAdminUi {
 
   private static final Scanner scanner = new Scanner(System.in);
 
-  private static final UserService userService = new UserService();
-  private static final BicycleService bicycleService = new BicycleService();
-  private static final StationService stationService = new StationService();
-  private static final EmployeeService employeeService = new EmployeeService();
+  private static final UserService userService = AppConfig.userService();
+  private static final BicycleService bicycleService = AppConfig.bicycleService();
+  private static final StationService stationService = AppConfig.stationService();
+  private static final EmployeeService employeeService = AppConfig.employeeService();
 
   private static final UserMenu userMenu = new UserMenu(userService);
   private static final StationMenu stationMenu = new StationMenu(stationService, employeeService);
