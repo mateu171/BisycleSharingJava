@@ -1,4 +1,4 @@
-package com.yakim.bicyclesharing.util;
+package com.yakim.bicyclesharing.presentation.enums;
 
 public enum EntityName {
   USERS("користучів"), BICYCLES("велосипедів"), STATIONS("станції"), EMPLOYEES(

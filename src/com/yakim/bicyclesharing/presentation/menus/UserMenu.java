@@ -3,9 +3,9 @@ package com.yakim.bicyclesharing.presentation.menus;
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.presentation.enums.EntityName;
 import com.yakim.bicyclesharing.services.UserService;
 import com.yakim.bicyclesharing.util.ConsoleHelper;
-import com.yakim.bicyclesharing.util.EntityName;
 import java.util.List;
 import java.util.Scanner;
 

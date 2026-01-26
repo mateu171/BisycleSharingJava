@@ -1,5 +1,6 @@
 package com.yakim.bicyclesharing.util;
 
+import com.yakim.bicyclesharing.presentation.enums.EntityName;
 import java.util.List;
 import java.util.Scanner;
 

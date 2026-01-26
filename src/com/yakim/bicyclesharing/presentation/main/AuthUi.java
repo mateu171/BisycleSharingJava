@@ -4,8 +4,8 @@ import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.domain.enums.Role;
 import com.yakim.bicyclesharing.exeption.AuthException;
 import com.yakim.bicyclesharing.exeption.CustomEntityValidationExeption;
+import com.yakim.bicyclesharing.exeption.EmailExeption;
 import com.yakim.bicyclesharing.services.AuthService;
-import com.yakim.bicyclesharing.services.EmailService;
 import com.yakim.bicyclesharing.services.UserService;
 import com.yakim.bicyclesharing.services.VerificationService;
 import com.yakim.bicyclesharing.util.AppConfig;
@@ -15,8 +15,7 @@ public class AuthUi {
 
   private static final UserService userService = AppConfig.userService();
   private static final AuthService authService = AppConfig.authService();
-  private static final VerificationService verifi = new VerificationService(
-      new EmailService("morgus288@gmail.com", "zbnb qxcn qpmm deks"));
+  private static final VerificationService verifi = AppConfig.verificationService();
   private static final Scanner scanner = new Scanner(System.in);
 
   public static void startUp() {
@@ -79,23 +78,23 @@ public class AuthUi {
         if (userService.existsByLogin(user.getLogin())) {
           System.out.println("Упс! Схоже що даний логін занятий\nСпробуйте ще раз\n");
         } else {
-//          try {
-          int code = verifi.sendVerificationCode(email);
-          System.out.println("Введіть код, який прийшов на email:");
-          String userCode = scanner.nextLine();
+          try {
+            int code = verifi.sendVerificationCode(email);
+            System.out.println("Введіть код, який прийшов на email:");
+            String userCode = scanner.nextLine();
 
-          if (!Integer.toString(code).equals(userCode)) {
-            System.out.println("Неправильний код, реєстрація скасована");
+            if (!Integer.toString(code).equals(userCode)) {
+              System.out.println("Неправильний код, реєстрація скасована");
+              return;
+            }
+
+            System.out.println("Успішна реєстрація");
+            userService.add(user);
             return;
+          } catch (EmailExeption e) {
+            System.out.println(e.getMessage());
+            System.out.println("Спробуйте знову\n");
           }
-
-          System.out.println("Успішна реєстрація");
-          userService.add(user);
-          return;
-//          } catch (EmailExeption e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Спробуйте знову\n");
-//          }
         }
       } catch (CustomEntityValidationExeption exception) {
         System.out.println(exception.getMessage());

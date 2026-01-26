@@ -22,5 +22,17 @@
     "role": "CLIENT",
     "id": "ecf2dd02-9efa-4c20-a33e-e58d900d847e",
     "errors": {}
+  },
+  {
+    "login": "Йосип",
+    "password": "$2a$12$VxMzCKFglK9XaOahuAn2l.MdYJKCX2WaZ1mVy83/OkhrQIM5JnF7W",
+    "email": "akimsergij702@gmail.com",
+    "role": "CLIENT",
+    "id": "8144b2fd-cd3a-443e-a1f5-83cb38ddf3a7",
+    "errors": {
+      "password": [
+        "password повинен бути не менше 8 символі і небільше 50"
+      ]
+    }
   }
 ]
