@@ -1,21 +1,5 @@
 [
   {
-    "login": "admin",
-    "password": "adminadmin",
-    "email": "admin@gmail.com",
-    "role": "ADMIN",
-    "id": "10879d59-648f-4c7a-962f-6167b5b3509d",
-    "errors": {}
-  },
-  {
-    "login": "Дора",
-    "password": "12345678",
-    "email": "dora@gmail.com",
-    "role": "CLIENT",
-    "id": "5454842b-caa8-4365-b83e-28a68465247b",
-    "errors": {}
-  },
-  {
     "login": "Моргус",
     "password": "12345678",
     "email": "akimsergij702@gmail.com",
@@ -29,11 +13,7 @@
     "email": "akimsergij702@gmail.com",
     "role": "CLIENT",
     "id": "8144b2fd-cd3a-443e-a1f5-83cb38ddf3a7",
-    "errors": {
-      "password": [
-        "password повинен бути не менше 8 символі і небільше 50"
-      ]
-    }
+    "errors": {}
   },
   {
     "login": "Сергій",
@@ -41,10 +21,22 @@
     "email": "akimsergij702@gmail.com",
     "role": "CLIENT",
     "id": "17136fd7-ca6f-4f2c-8e48-3a3acee60b38",
-    "errors": {
-      "password": [
-        "password повинен бути не менше 8 символі і небільше 50"
-      ]
-    }
+    "errors": {}
+  },
+  {
+    "login": "Ярослав",
+    "password": "$2a$12$7WtUP8xl9sfeY2u.6NEsluXXMNBj.r8LtptE4ku0jDkoQ0116WNvi",
+    "email": "gamesep32@gmail.com",
+    "role": "CLIENT",
+    "id": "19c6ae67-144c-43b9-9d17-3dcdb02bf51b",
+    "errors": {}
+  },
+  {
+    "login": "admin",
+    "password": "$2a$12$ZnHLLy4RAWaZ2.Jn1SL97eq6WZvgrM8tGQ2XF84m6cFwRKmDhBm.q",
+    "email": "admin@gmail.com",
+    "role": "ADMIN",
+    "id": "57a2f2a2-ce3a-42f7-9785-6c603ef88101",
+    "errors": {}
   }
 ]

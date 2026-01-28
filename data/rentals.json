@@ -31,5 +31,16 @@
     "totalCost": 0.0,
     "id": "dec4b9a4-261c-4d7a-b611-454dea470f24",
     "errors": {}
+  },
+  {
+    "userId": "19c6ae67-144c-43b9-9d17-3dcdb02bf51b",
+    "bicycleId": "219a6e4c-1b2d-4c2f-8c21-92fbbf35d1a1",
+    "stationId": "c5d8324f-865c-46ef-85bd-401c9cebb876",
+    "rentalStatus": "INACTIVE",
+    "start": "2026-01-28T13:44:48.91836",
+    "end": "2026-01-28T13:46:49.4394566",
+    "totalCost": 80.0,
+    "id": "16738f27-a9a9-4dee-bc83-b6d7f23a03bc",
+    "errors": {}
   }
 ]

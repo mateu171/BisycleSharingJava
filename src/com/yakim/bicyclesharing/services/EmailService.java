@@ -12,12 +12,10 @@ import java.util.Properties;
 
 public class EmailService {
 
-  private final String fromEmail;
-  private final String password;
+  private static final String FROM_EMAIL = "morgus288@gmail.com";
+  private static final String PASSWORD = "zbnb qxcn qpmm deks";
 
-  public EmailService(String fromEmail, String password) {
-    this.fromEmail = fromEmail;
-    this.password = password;
+  public EmailService() {
   }
 
   public void send(String to, String subject, String text) {
@@ -32,12 +30,12 @@ public class EmailService {
       Session session = Session.getInstance(properties, new Authenticator() {
         @Override
         protected PasswordAuthentication getPasswordAuthentication() {
-          return new PasswordAuthentication(fromEmail, password);
+          return new PasswordAuthentication(FROM_EMAIL, PASSWORD);
         }
       });
 
       MimeMessage message = new MimeMessage(session);
-      message.setFrom(new InternetAddress(fromEmail));
+      message.setFrom(new InternetAddress(FROM_EMAIL));
       message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
       message.setSubject(subject, "UTF-8");
       message.setText(text, "UTF-8");

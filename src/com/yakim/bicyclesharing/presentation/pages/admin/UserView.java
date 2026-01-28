@@ -2,7 +2,6 @@ package com.yakim.bicyclesharing.presentation.pages.admin;
 
 import com.yakim.bicyclesharing.domain.Impl.User;
 import com.yakim.bicyclesharing.presentation.enums.EntityName;
-import com.yakim.bicyclesharing.presentation.forms.admin.user.AddUserForm;
 import com.yakim.bicyclesharing.presentation.forms.admin.user.DeleteUserForm;
 import com.yakim.bicyclesharing.presentation.forms.admin.user.EditUserForm;
 import com.yakim.bicyclesharing.presentation.forms.admin.user.SearchUserForm;
@@ -23,19 +22,17 @@ public class UserView {
       users = userService.getAll();
       System.out.println("Користувачі");
       System.out.println("1 - Переглянути всіх користувачів");
-      System.out.println("2 - Додати користувача");
-      System.out.println("3 - Редагувати користувача");
-      System.out.println("4 - Видалити користувача");
-      System.out.println("5 - Пошук користувача");
+      System.out.println("2 - Редагувати користувача");
+      System.out.println("3 - Видалити користувача");
+      System.out.println("4 - Пошук користувача");
       System.out.println("0 - Назад");
       System.out.print("Виберіть опцію: ");
       String choice = scanner.nextLine();
       switch (choice) {
         case "1" -> ConsoleHelper.showAll(users, EntityName.USERS);
-        case "2" -> new AddUserForm().addNewUser();
-        case "3" -> new EditUserForm().editUser();
-        case "4" -> new DeleteUserForm().deleteUser();
-        case "5" -> new SearchUserForm().searchUser();
+        case "2" -> new EditUserForm().editUser();
+        case "3" -> new DeleteUserForm().deleteUser();
+        case "4" -> new SearchUserForm().searchUser();
         case "0" -> {
           return;
         }
